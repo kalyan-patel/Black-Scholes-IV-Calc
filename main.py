@@ -25,12 +25,12 @@ st.title("🎯 Black-Scholes Model Option Pricer")
 
 # Sidebar model inputs
 with st.sidebar:
-    st.title("👺 Black-Scholes Pricer and Volatility Calculator")
+    st.title("😼📊 Black-Scholes Pricer and Volatility Calculator")
 # Sidebar inputs
 st.sidebar.header("Option Parameters")
 S = st.sidebar.number_input("Spot Price (S)", value=100.)
 K = st.sidebar.number_input("Strike Price (K)", value=100.)
-T = st.sidebar.number_input("Time to Maturity (T) in days", value=365)
+T = st.sidebar.number_input("Time to Expiry (T) in days", value=365)
 r = st.sidebar.number_input("Risk-Free Rate (r)", value=get_risk_free_rate(), format="%.3f")
 sigma = st.sidebar.number_input("Volatility (σ)", value=0.2)
 
@@ -42,7 +42,7 @@ call_price = bs_model.call_price()
 put_price = bs_model.put_price()
 
 # Display results
-st.subheader(f"Prices of options {int(bs_model.T * 365)} DTE @ ${bs_model.K} with spot price = {bs_model.S}, r = {bs_model.r}, and σ = {bs_model.sig}:")
+st.subheader(f"Prices of options {int(bs_model.T * 365)} DTE @ ${bs_model.K:.2f} with spot price = {bs_model.S:.2f}, r = {bs_model.r}, and σ = {bs_model.sig}:")
 col1, col2 = st.columns(2)
 with col1:
     st.markdown("<div style='padding: 20px; border: 2px solid #4CAF50; border-radius: 10px; text-align: center;'>"
@@ -60,7 +60,7 @@ with col2:
 ##############################################################################
 ### IMPLIED VOLATILITY CALCULATOR
 
-st.title("📊 Implied Volatility Calculator")
+st.title("📉📈 Implied Volatility Calculator")
 
 # Sidebar price input
 st.sidebar.header("Implied Volatility Calculator")
@@ -70,8 +70,13 @@ if st.sidebar.button("Calculate Implied Volatility"):
     imp_vol = bs_model.implied_volatility(option_price)
     
 # Display volatility calculation
-st.subheader(f"For a CALL or PUT option {int(bs_model.T * 365)} DTE @ ${bs_model.K} with spot price = {bs_model.S} and r = {bs_model.r}:")
+st.subheader(f"For a CALL or PUT option {int(bs_model.T * 365)} DTE @ ${bs_model.K:.2f} with spot price = {bs_model.S:.2f} and r = {bs_model.r}:")
 st.markdown("<div style='padding: 20px; border: 2px solid #FFA500; border-radius: 10px; text-align: center;'>"
-            "<h3 style='color: #FFA500;'>VOLATILITY of the underlying (σ)</h3>"
+            "<h3 style='color: #FFA500;'>IMPLIED VOLATILITY of the underlying (σ)</h3>"
             f"<h2 style='color: #FFA500;'>{imp_vol:.2%}</h2>"
             "</div>", unsafe_allow_html=True)
+
+
+
+st.write("---")
+st.markdown("Created by Kalyan Patel  |   [LinkedIn](https://www.linkedin.com/in/kalyan-patel-329214215/)")
