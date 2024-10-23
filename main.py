@@ -42,7 +42,7 @@ call_price = bs_model.call_price()
 put_price = bs_model.put_price()
 
 # Display results
-st.subheader(f"Prices of options {int(bs_model.T * 365)} DTE @ ${bs_model.K:.2f} with spot price = {bs_model.S:.2f}, r = {bs_model.r}, and σ = {bs_model.sig}:")
+st.subheader(f"Prices of options {int(bs_model.T * 365)} DTE @ ${bs_model.K:.2f} with spot price = {bs_model.S:.2f}, r = {bs_model.r:.3f}, and σ = {bs_model.sig:.3f}:")
 col1, col2 = st.columns(2)
 with col1:
     st.markdown("<div style='padding: 20px; border: 2px solid #4CAF50; border-radius: 10px; text-align: center;'>"
@@ -70,7 +70,7 @@ if st.sidebar.button("Calculate Implied Volatility"):
     imp_vol = bs_model.implied_volatility(option_price)
     
 # Display volatility calculation
-st.subheader(f"For a CALL or PUT option {int(bs_model.T * 365)} DTE @ ${bs_model.K:.2f} with spot price = {bs_model.S:.2f} and r = {bs_model.r}:")
+st.subheader(f"For a CALL or PUT option {int(bs_model.T * 365)} DTE @ ${bs_model.K:.2f} with spot price = {bs_model.S:.2f} and r = {bs_model.r:.3f}:")
 st.markdown("<div style='padding: 20px; border: 2px solid #FFA500; border-radius: 10px; text-align: center;'>"
             "<h3 style='color: #FFA500;'>IMPLIED VOLATILITY of the underlying (σ)</h3>"
             f"<h2 style='color: #FFA500;'>{imp_vol:.2%}</h2>"
