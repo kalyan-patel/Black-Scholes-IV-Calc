@@ -1,5 +1,6 @@
 import streamlit as st
 import yfinance as yf
+import math
 from black_scholes_model import BlackScholesModel
 
 
@@ -73,9 +74,8 @@ if st.sidebar.button("Calculate Implied Volatility"):
 st.subheader(f"For a CALL or PUT option {int(bs_model.T * 365)} DTE @ ${bs_model.K:.2f} with spot price = {bs_model.S:.2f} and r = {bs_model.r:.3f}:")
 st.markdown("<div style='padding: 20px; border: 2px solid #FFA500; border-radius: 10px; text-align: center;'>"
             "<h3 style='color: #FFA500;'>IMPLIED VOLATILITY of the underlying (σ)</h3>"
-            f"<h2 style='color: #FFA500;'>{imp_vol:.2%}</h2>"
+            f"<h2 style='color: #FFA500;'>{imp_vol:.2%} ({(imp_vol / math.sqrt(252)):.2%} daily)</h2>"
             "</div>", unsafe_allow_html=True)
-
 
 
 st.write("---")
