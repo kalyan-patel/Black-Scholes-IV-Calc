@@ -1,4 +1,9 @@
 streamlit
+math
 numpy
-scipy
+pandas
 yfinance
+plotly
+arch
+datetime
+scipy
