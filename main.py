@@ -22,10 +22,9 @@ st.set_page_config(
 ### OPTIONS PRICER
 
 # Returns an estimate for the current risk free rate using the 1 year treasury yield
+# TODO have to fix because of yfinance deprecations
 def get_risk_free_rate():
-    treasury_data = yf.Ticker("^IRX")
-    rate = treasury_data.history(period="1d")['Close'][0] / 100
-    return rate
+    return 0.015
 
 
 st.title("🎯 Black-Scholes Model Option Pricer")
